@@ -36,6 +36,8 @@
 *.x86_64
 *.hex
 getBalance
+unForbidden
+unlockAccount
 
 # Debug files
 *.dSYM/
