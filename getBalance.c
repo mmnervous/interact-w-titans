@@ -83,7 +83,7 @@ start_len ft_truncate(char *buffer, int delimiter, int x) // this function calcu
 
 void getBalance(char *argv)
 {
-	char		int_getBalance[500];
+	char		int_getBalance[200];
 	char		*result;
 	start_len	data = {.start = 0, .len = 0};
 	get_request req = {.buffer = NULL, .len = 0, .buflen = 0};
@@ -94,7 +94,7 @@ void getBalance(char *argv)
 	slist1 = curl_slist_append(slist1, "content-type: application/json;");
 	hnd = curl_easy_init();
 
-	sprintf(int_getBalance, "{\"jsonrpc\":\"2.0\",\"method\":\"int_getBalance\",\"params\":[\"%s\", \"latest\"],\"id\":1}", argv);
+	snprintf(int_getBalance, sizeof(int_getBalance), "{\"jsonrpc\":\"2.0\",\"method\":\"int_getBalance\",\"params\":[\"%s\", \"latest\"],\"id\":1}", argv);
 
 	curl_easy_setopt(hnd, CURLOPT_BUFFERSIZE, 102400L);
 	curl_easy_setopt(hnd, CURLOPT_URL, "http://localhost:8555/testnet");
@@ -109,8 +109,8 @@ void getBalance(char *argv)
 	ret = curl_easy_perform(hnd);
 	// printf("Result = %u\n",ret);
 	// printf("Total received bytes: %zu\n", req.len);
-	data = ft_truncate(req.buffer, '"', 5);
-	result = ft_strsub(req.buffer, data.start, data.len);
+	data = ft_truncate(req.buffer, '"', 5); // tell where to start and where to end.
+	result = ft_strsub(req.buffer, data.start, data.len); // crop string
 	printf("Received data: %s\n", result);
 	free(req.buffer);
 
