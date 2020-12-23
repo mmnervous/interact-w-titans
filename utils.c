@@ -1,0 +1,65 @@
+#include "titans.h"
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	if (s)
+	{
+		i = 0;
+		str = (char*)malloc(len + 1);
+		if (!str)
+			return (NULL);
+		while (s[start] && i < len)
+		{
+			str[i] = s[start];
+			++i;
+			++start;
+		}
+		str[i] = '\0';
+		return (str);
+	}
+	return (NULL);
+}
+
+start_len ft_truncate(char *buffer, int delimiter, int x) // this function calculate where to start and where to end
+{
+	int		j;
+	int		k;
+
+	x = x * 2 - 1;
+	start_len data = {.start = 0, .len = 0};
+
+	j = 0;
+	k = 0;
+	while (buffer[data.start] && x != j)
+	{
+		if (buffer[data.start] == delimiter)
+			++j;
+		++data.start;
+	}
+	k = data.start;
+	while (buffer[k] && buffer[k] != delimiter)
+		++k;
+	data.len = k - data.start;
+	// printf("truncate : data.start = %d, j = %d, k = %d, data.len = %d\n", data.start, j, k, data.len); // debug
+	return (data);
+}
+
+double hexToDec(char *hex)
+{
+	mpz_t	nr;
+	mpf_t	f;
+	char	*base10;
+	double	decimal;
+
+	mpz_init(nr);
+	mpf_init(f);
+	mpz_set_str(nr, hex+2, 16);
+	base10 = mpz_get_str(NULL, 10, nr);
+	mpf_set_str(f, base10, 10);
+	mpf_div_ui (f, f, 1000000000000000000);
+	decimal = mpf_get_d(f);
+	return (decimal);
+}
