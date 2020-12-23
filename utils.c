@@ -79,5 +79,6 @@ double hexToDec(char *hex)
 	mpf_set_str(f, base10, 10);
 	mpf_div_ui (f, f, 1e+18);
 	decimal = mpf_get_d(f);
+	mpz_clear(nr);
 	return (decimal);
 }
