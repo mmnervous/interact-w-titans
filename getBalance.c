@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <gmp.h>
 
 typedef struct {
 	unsigned char *buffer;
@@ -81,6 +82,16 @@ start_len ft_truncate(char *buffer, int delimiter, int x) // this function calcu
 	return (data);
 }
 
+char	*hexToDec(char *hex)
+{	mpz_t	nr;
+	char	*decimal;
+
+	mpz_init(nr);
+	mpz_set_str(nr, hex+2, 16);
+	decimal = mpz_get_str(NULL, 10, nr);
+	return (decimal);
+}
+
 void getBalance(char *publicAddress)
 {
 	char		int_getBalance[200];
@@ -111,7 +122,9 @@ void getBalance(char *publicAddress)
 	// printf("Total received bytes: %zu\n", req.len);
 	data = ft_truncate(req.buffer, '"', 5); // tell where to start and where to end.
 	result = ft_strsub(req.buffer, data.start, data.len); // crop string
-	printf("Received data: %s\n", result);
+	// printf("Received data: %s\n", result);
+	printf("base 10: %s\n", hexToDec(result));
+
 	free(req.buffer);
 
 	curl_easy_cleanup(hnd);
