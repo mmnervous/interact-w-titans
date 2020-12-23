@@ -102,13 +102,14 @@ double hexToDec(char *hex)
 
 void getBalance(char *publicAddress)
 {
-	char		int_getBalance[200];
-	char		*result;
-	start_len	data = {.start = 0, .len = 0};
-	get_request req = {.buffer = NULL, .len = 0, .buflen = 0};
-	CURLcode ret;
-	CURL *hnd;
-	struct curl_slist *slist1;
+	char				int_getBalance[200];
+	char				*result;
+	start_len			data = {.start = 0, .len = 0};
+	get_request			req = {.buffer = NULL, .len = 0, .buflen = 0};
+	CURLcode			ret;
+	CURL				*hnd;
+	struct curl_slist	*slist1;
+
 	slist1 = NULL;
 	slist1 = curl_slist_append(slist1, "content-type: application/json;");
 	hnd = curl_easy_init();
