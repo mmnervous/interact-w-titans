@@ -81,7 +81,7 @@ start_len ft_truncate(char *buffer, int delimiter, int x) // this function calcu
 	return (data);
 }
 
-void getBalance(char *argv)
+void getBalance(char *publicAddress)
 {
 	char		int_getBalance[200];
 	char		*result;
@@ -94,7 +94,7 @@ void getBalance(char *argv)
 	slist1 = curl_slist_append(slist1, "content-type: application/json;");
 	hnd = curl_easy_init();
 
-	snprintf(int_getBalance, sizeof(int_getBalance), "{\"jsonrpc\":\"2.0\",\"method\":\"int_getBalance\",\"params\":[\"%s\", \"latest\"],\"id\":1}", argv);
+	snprintf(int_getBalance, sizeof(int_getBalance), "{\"jsonrpc\":\"2.0\",\"method\":\"int_getBalance\",\"params\":[\"%s\", \"latest\"],\"id\":1}", publicAddress);
 
 	curl_easy_setopt(hnd, CURLOPT_BUFFERSIZE, 102400L);
 	curl_easy_setopt(hnd, CURLOPT_URL, "http://localhost:8555/testnet");
