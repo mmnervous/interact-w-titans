@@ -6,6 +6,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <gmp.h>
+# define CHUNK_SIZE 2048
 
 typedef struct {
 	unsigned char *buffer;

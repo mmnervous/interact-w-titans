@@ -1,25 +1,5 @@
 #include "titans.h"
 
-#define CHUNK_SIZE 2048
-
-size_t	write_callback(char *ptr, size_t size, size_t nmemb, void *userdata)
-{
-	size_t realsize = size * nmemb;
-	get_request *req = (get_request *) userdata;
-
-	// printf("receive chunk of %zu bytes\n", realsize);
-	while (req->buflen < req->len + realsize + 1)
-	{
-		req->buffer = realloc(req->buffer, req->buflen + CHUNK_SIZE);
-		req->buflen += CHUNK_SIZE;
-	}
-	memcpy(&req->buffer[req->len], ptr, realsize);
-	req->len += realsize;
-	req->buffer[req->len] = 0;
-
-	return realsize;
-}
-
 void getBalance(char *publicAddress)
 {
 	char				int_getBalance[200];
