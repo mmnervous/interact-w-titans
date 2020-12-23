@@ -61,6 +61,8 @@ start_len ft_truncate(char *buffer, int delimiter, int x) // this function calcu
 {
 	int		j;
 	int		k;
+
+	x = x * 2 - 1;
 	start_len data = {.start = 0, .len = 0};
 
 	j = 0;
@@ -107,7 +109,7 @@ void getBalance(char *argv)
 	ret = curl_easy_perform(hnd);
 	// printf("Result = %u\n",ret);
 	// printf("Total received bytes: %zu\n", req.len);
-	data = ft_truncate(req.buffer, '"', 9);
+	data = ft_truncate(req.buffer, '"', 5);
 	result = ft_strsub(req.buffer, data.start, data.len);
 	printf("Received data: %s\n", result);
 	free(req.buffer);
