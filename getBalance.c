@@ -82,13 +82,21 @@ start_len ft_truncate(char *buffer, int delimiter, int x) // this function calcu
 	return (data);
 }
 
-char	*hexToDec(char *hex)
-{	mpz_t	nr;
-	char	*decimal;
+double hexToDec(char *hex)
+{
+	mpz_t	nr;
+	mpf_t	f;
+	char	*base10;
+	double	decimal;
 
 	mpz_init(nr);
+	mpf_init(f);
 	mpz_set_str(nr, hex+2, 16);
-	decimal = mpz_get_str(NULL, 10, nr);
+	base10 = mpz_get_str(NULL, 10, nr);
+	mpf_set_str(f, base10, 10);
+	decimal = mpf_get_d(f);
+	mpf_div_ui (f, f, 1000000000000000000);
+	decimal = mpf_get_d(f);
 	return (decimal);
 }
 
@@ -123,7 +131,7 @@ void getBalance(char *publicAddress)
 	data = ft_truncate(req.buffer, '"', 5); // tell where to start and where to end.
 	result = ft_strsub(req.buffer, data.start, data.len); // crop string
 	// printf("Received data: %s\n", result);
-	printf("base 10: %s\n", hexToDec(result));
+	printf("%f INT\n", hexToDec(result));
 
 	free(req.buffer);
 
