@@ -1,7 +1,7 @@
 # interact-w-titans
 
 ## Compile
-`gcc getBalance.c utils.c -lcurl -lgmp -o getBalance`
+`gcc main.c utils.c int_request/* -lcurl -lgmp -o file_name`
 
 ## Run
-`./getBalance <address>`
+`./file_name`
