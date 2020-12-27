@@ -1,16 +1,11 @@
-/*
-	1				getBalance			(char *publicAddress);
-	2				unForbidden			(char *publicAddress);
-	3				unlockAccount		(char *publicAddress, char *password);
-	4				void withdrawReward	(char *fromAddress, char *delegateAddress);
-*/
-
 #include "titans.h"
 
 int main (int argc, char *argv[])
 {
+	int ret;
 	int i;
 
+	ret = 0;
 	i = 1;
 	if (argc == 1)
 	{
@@ -31,7 +26,7 @@ int main (int argc, char *argv[])
 	else
 	{
 		if (atoi(argv[1]) == 1)
-			getBalance(argv[2]);
+			ret = getBalance(argv[2]);
 		else if (atoi(argv[1]) == 2)
 			unForbidden(argv[2]);
 		else if (atoi(argv[1]) == 3)
@@ -41,5 +36,6 @@ int main (int argc, char *argv[])
 		else
 			printf("Error\n");
 	}
+	printf("ret = %d\n", ret); // debug
 	return (0);
 }

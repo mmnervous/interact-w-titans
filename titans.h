@@ -26,9 +26,9 @@ double 				hexToDec(char *hex);
 
 /* int 4.0 requests */
 
-void	getBalance(char *publicAddress);
-void	unForbidden(char *publicAddress);
-void	unlockAccount(char *publicAddress, char *password);
-void	withdrawReward(char *fromAddress, char *delegateAddress);
+int	getBalance(char *publicAddress);
+int	unForbidden(char *publicAddress);
+int	unlockAccount(char *publicAddress, char *password);
+int	withdrawReward(char *fromAddress, char *delegateAddress);
 
 #endif

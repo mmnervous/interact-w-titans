@@ -1,6 +1,6 @@
 #include "../titans.h"
 
-void unForbidden(char *publicAddress)
+int unForbidden(char *publicAddress)
 {
 	char				int_unForbidden[200];
 	char				*result;
@@ -30,7 +30,8 @@ void unForbidden(char *publicAddress)
 	// printf("Result = %u\n",ret);
 	// printf("Total received bytes: %zu\n", req.len);
 	data = ft_truncate(req.buffer, '"', 7); // tell where to start and where to end.
-	result = ft_strsub(req.buffer, data.start, data.len); // crop string
+	if (!(result = ft_strsub(req.buffer, data.start, data.len))); // crop string
+		return (-1);
 	// printf("Received data: %s\n", result);
 	printf("%s", result);
 
@@ -40,4 +41,5 @@ void unForbidden(char *publicAddress)
 	hnd = NULL;
 	curl_slist_free_all(slist1);
 	slist1 = NULL;
+	return (0);
 }
