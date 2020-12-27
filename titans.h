@@ -19,9 +19,16 @@ typedef struct {
 	size_t len;
 } start_len;
 
-size_t		write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
-char		*ft_strsub(char const *s, unsigned int start, size_t len);
-start_len 	ft_truncate(char *buffer, int delimiter, int x);
-double 		hexToDec(char *hex);
+size_t				write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
+char				*ft_strsub(char const *s, unsigned int start, size_t len);
+start_len 			ft_truncate(char *buffer, int delimiter, int x);
+double 				hexToDec(char *hex);
+
+/* int 4.0 requests */
+
+void	getBalance(char *publicAddress);
+void	unForbidden(char *publicAddress);
+void	unlockAccount(char *publicAddress, char *password);
+void	withdrawReward(char *fromAddress, char *delegateAddress);
 
 #endif

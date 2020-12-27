@@ -44,6 +44,9 @@ void unlockAccount(char *publicAddress, char *password)
 
 int	main(int argc, char *argv[])
 {
-	unlockAccount(argv[1], argv[2]);
+	if (argc != 3)
+		printf("usage: %s <publicAddress> <password>\n", argv[0]);
+	else
+		unlockAccount(argv[1], argv[2]);
 	return (0);
 }
