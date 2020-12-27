@@ -1,5 +1,10 @@
 # interact-w-titans
 
+## Prerequisite
+
+`sudo apt-get install libcurl4-gnutls-dev`<br>
+`sudo apt-get install libgmp-dev`
+
 ## Compile
 `gcc main.c utils.c int_request/* -lcurl -lgmp -o file_name`
 
