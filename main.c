@@ -12,13 +12,13 @@ int main (int argc, char *argv[])
 		switch (i)
 		{
 			case 1:
-				printf("getBalance:\t%s <1> <publicAddress>\n", argv[0]);
+				printf("getBalance:\t%s 1 <publicAddress>\n", argv[0]);
 			case 2:
-				printf("unForbidden:\t%s <2> <publicAddress>\n", argv[0]);
+				printf("unForbidden:\t%s 2 <publicAddress>\n", argv[0]);
 			case 3:
-				printf("unlockAccount:\t%s <3> <publicAddres> <password>\n", argv[0]);
+				printf("unlockAccount:\t%s 3 <publicAddres> <password>\n", argv[0]);
 			case 4:
-				printf("withdrawReward:\t%s <4> <fromAddress> <delegateAddress>\n", argv[0]);
+				printf("withdrawReward:\t%s 4 <fromAddress> <delegateAddress>\n", argv[0]);
 			default:
 				printf("\n");
 		}
@@ -28,14 +28,14 @@ int main (int argc, char *argv[])
 		if (atoi(argv[1]) == 1)
 			ret = getBalance(argv[2]);
 		else if (atoi(argv[1]) == 2)
-			unForbidden(argv[2]);
+			ret = unForbidden(argv[2]);
 		else if (atoi(argv[1]) == 3)
-			unlockAccount(argv[2], argv[3]);
+			ret = unlockAccount(argv[2], argv[3]);
 		else if (atoi(argv[1]) == 4)
-			withdrawReward(argv[2], argv[3]);
+			ret = withdrawReward(argv[2], argv[3]);
 		else
 			printf("Error\n");
 	}
-	printf("ret = %d\n", ret); // debug
+	// printf("ret = %d\n", ret); // debug
 	return (0);
 }
