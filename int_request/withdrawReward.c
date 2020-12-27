@@ -1,4 +1,4 @@
-#include "titans.h"
+#include "../titans.h"
 
 void withdrawReward(char *fromAddress, char *delegateAddress)
 {
@@ -40,10 +40,4 @@ void withdrawReward(char *fromAddress, char *delegateAddress)
 	hnd = NULL;
 	curl_slist_free_all(slist1);
 	slist1 = NULL;
-}
-
-int	main(int argc, char *argv[])
-{
-	withdrawReward(argv[1], argv[2]);
-	return (0);
 }

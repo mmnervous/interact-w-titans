@@ -1,4 +1,4 @@
-#include "titans.h"
+#include "../titans.h"
 
 void unForbidden(char *publicAddress)
 {
@@ -40,10 +40,4 @@ void unForbidden(char *publicAddress)
 	hnd = NULL;
 	curl_slist_free_all(slist1);
 	slist1 = NULL;
-}
-
-int	main(int argc, char *argv[])
-{
-	unForbidden(argv[1]);
-	return (0);
 }

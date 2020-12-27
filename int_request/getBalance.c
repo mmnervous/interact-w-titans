@@ -1,4 +1,4 @@
-#include "titans.h"
+#include "../titans.h"
 
 void getBalance(char *publicAddress)
 {
@@ -40,10 +40,4 @@ void getBalance(char *publicAddress)
 	hnd = NULL;
 	curl_slist_free_all(slist1);
 	slist1 = NULL;
-}
-
-int	main(int argc, char *argv[])
-{
-	getBalance(argv[1]);
-	return (0);
 }

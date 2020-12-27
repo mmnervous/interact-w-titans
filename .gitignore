@@ -39,6 +39,7 @@ getBalance
 unForbidden
 unlockAccount
 
+
 # Debug files
 *.dSYM/
 *.su

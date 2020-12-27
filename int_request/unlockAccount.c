@@ -1,4 +1,4 @@
-#include "titans.h"
+#include "../titans.h"
 
 void unlockAccount(char *publicAddress, char *password)
 {
@@ -40,13 +40,4 @@ void unlockAccount(char *publicAddress, char *password)
 	hnd = NULL;
 	curl_slist_free_all(slist1);
 	slist1 = NULL;
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc != 3)
-		printf("usage: %s <publicAddress> <password>\n", argv[0]);
-	else
-		unlockAccount(argv[1], argv[2]);
-	return (0);
 }

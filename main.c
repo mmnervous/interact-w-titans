@@ -9,10 +9,10 @@
 
 int main (int argc, char *argv[])
 {
-	 int i;
+	int i;
 
-	 i = 1;
-	 if (argc == 1)
+	i = 1;
+	if (argc == 1)
 	{
 		switch (i)
 		{
@@ -28,5 +28,18 @@ int main (int argc, char *argv[])
 				printf("\n");
 		}
 	}
-	return 0;
+	else
+	{
+		if (atoi(argv[1]) == 1)
+			getBalance(argv[2]);
+		else if (atoi(argv[1]) == 2)
+			unForbidden(argv[2]);
+		else if (atoi(argv[1]) == 3)
+			unlockAccount(argv[2], argv[3]);
+		else if (atoi(argv[1]) == 4)
+			withdrawReward(argv[2], argv[3]);
+		else
+			printf("Error\n");
+	}
+	return (0);
 }
