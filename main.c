@@ -25,17 +25,19 @@ int main (int argc, char *argv[])
 	}
 	else
 	{
-		if (atoi(argv[1]) == 1)
+		if (atoi(argv[1]) == 1 && argc == 3)
 			ret = getBalance(argv[2]);
-		else if (atoi(argv[1]) == 2)
+		else if (atoi(argv[1]) == 2 && argc == 3)
 			ret = unForbidden(argv[2]);
-		else if (atoi(argv[1]) == 3)
+		else if (atoi(argv[1]) == 3 && argc == 4)
 			ret = unlockAccount(argv[2], argv[3]);
-		else if (atoi(argv[1]) == 4)
+		else if (atoi(argv[1]) == 4 && argc == 4)
 			ret = withdrawReward(argv[2], argv[3]);
 		else
 			printf("Error\n");
 	}
+	if (ret != 0)
+		printf("An error occured. Return code: %d\n", ret);
 	// printf("ret = %d\n", ret); // debug
 	return (ret);
 }
