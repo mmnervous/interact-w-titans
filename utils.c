@@ -41,7 +41,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	return (NULL);
 }
 
-start_len ft_truncate(char *buffer, int delimiter, int x) // this function calculate where to start and where to end
+start_len ft_truncate(unsigned char *buffer, int delimiter, int x) // this function calculate where to start and where to end
 {
 	int		j;
 	int		k;

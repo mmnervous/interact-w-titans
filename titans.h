@@ -21,7 +21,7 @@ typedef struct {
 
 size_t				write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
-start_len 			ft_truncate(char *buffer, int delimiter, int x);
+start_len 			ft_truncate(unsigned char *buffer, int delimiter, int x);
 double 				hexToDec(char *hex);
 
 /* int 4.0 requests */

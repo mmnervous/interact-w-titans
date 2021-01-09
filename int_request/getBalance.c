@@ -30,10 +30,10 @@ int getBalance(char *publicAddress)
 	// printf("Result = %u\n",ret);
 	// printf("Total received bytes: %zu\n", req.len);
 	data = ft_truncate(req.buffer, '"', 5); // tell where to start and where to end.
-	if (!(result = ft_strsub(req.buffer, data.start, data.len))) // crop string
+	if (!(result = ft_strsub((char const*)req.buffer, data.start, data.len))) // crop string
 		return (-1);
 	// printf("Received data: %s\n", result);
-	printf("%f INT\n", hexToDec(result));
+	printf("Balance: %f INT\n", hexToDec(result));
 
 	free(req.buffer);
 
