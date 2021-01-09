@@ -1,17 +1,21 @@
 #include "titans.h"
 
+void	show_Help(char	**argv)
+{
+	printf("getBalance:\t%1$s 1 <publicAddress>\n"
+	"unForbidden:\t%1$s 2 <publicAddress>\n"
+	"unlockAccount:\t%1$s 3 <publicAddres> <password>\n"
+	"withdrawReward:\t%1$s 4 <fromAddress> <delegateAddress>\n"
+	"...\n", argv[0]);
+}
+
 int main (int argc, char *argv[])
 {
 	int ret;
 
 	ret = 0;
 	if (argc == 1)
-	{
-		printf("getBalance:\t%s 1 <publicAddress>\n", argv[0]);
-		printf("unForbidden:\t%s 2 <publicAddress>\n", argv[0]);
-		printf("unlockAccount:\t%s 3 <publicAddres> <password>\n", argv[0]);
-		printf("withdrawReward:\t%s 4 <fromAddress> <delegateAddress>\n", argv[0]);
-	}
+		show_Help(argv);
 	else
 	{
 		if (atoi(argv[1]) == 1 && argc == 3)
@@ -23,7 +27,7 @@ int main (int argc, char *argv[])
 		else if (atoi(argv[1]) == 4 && argc == 4)
 			ret = withdrawReward(argv[2], argv[3]);
 		else
-			printf("Error\n");
+			show_Help(argv);
 	}
 	if (ret != 0)
 		printf("An error occured. Return code: %d\n", ret);

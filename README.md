@@ -24,6 +24,6 @@
 ./file_name 3 publicAddres password <br>
 ./file_name 4 fromAddress delegateAddress <br>
 
-`./file_name 1 INT3HcmxkEx7dDRwVHqEVV46v1dYFsyd`
+`./interact 1 INT3HcmxkEx7dDRwVHqEVV46v1dYFsyd`
 
 [Telegram @mmnervous](https://t.me/mmnervous)

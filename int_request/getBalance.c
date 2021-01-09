@@ -27,16 +27,14 @@ int getBalance(char *publicAddress)
 	curl_easy_setopt(hnd, CURLOPT_WRITEDATA, (void *)&req);
 
 	ret = curl_easy_perform(hnd);
-	// printf("Result = %u\n",ret);
-	// printf("Total received bytes: %zu\n", req.len);
-	data = ft_truncate(req.buffer, '"', 5); // tell where to start and where to end.
-	if (!(result = ft_strsub((char const*)req.buffer, data.start, data.len))) // crop string
-		return (-1);
-	// printf("Received data: %s\n", result);
-	printf("Balance: %f INT\n", hexToDec(result));
-
+	if (strstr((const char*)req.buffer, "result"))
+	{
+		result = value_of_json(req.buffer);
+		printf("Balance: %f INT\n", hexToDec(result));
+	}
+	else
+		print_error(req.buffer);
 	free(req.buffer);
-
 	curl_easy_cleanup(hnd);
 	hnd = NULL;
 	curl_slist_free_all(slist1);

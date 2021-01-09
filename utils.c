@@ -1,8 +1,74 @@
 #include "titans.h"
 
-char	*value_of_json(char *valueOf)
+// char	*value_of_json(unsigned char *buffer, char *valueOf)
+// {
+// 	char	*buffer2;
+// 	char	*result;
+// 	int		i = 0;
+// 	int		j;
+
+// 	buffer2 = strstr((const char*)buffer, valueOf);
+// 	if (buffer2)
+// 	{
+// 		result = (char*)malloc(strlen(buffer2));
+// 		result = strcpy(result, buffer2);
+// 		result = result+(strlen(valueOf));
+// 		while (result[i] == '"' || result[i] == ':')
+// 			++i;
+// 		j = strlen(result);
+// 		printf("j = %d\n", j);
+// 		while (result[j] != '"')
+// 		{
+// 			printf("j = %d\n", j);
+// 			--j;
+// 		}
+// 		printf("j = %d\n", j);
+// 		result = ft_strsub(result, i, j);
+
+// 	}
+// 	return (result);
+// }
+
+void	print_error(unsigned char *buffer)
 {
-	;
+	/* unlock account */
+	if (strstr((const char*)buffer, "could not decrypt key with given passphrase"))
+		printf("Error: could not decrypt key with given passphrase\n");
+	else if (strstr((const char*)buffer, "no key for given address or file"))
+		printf("Error: no key for given address or file\n");
+
+	/* withdraw reward */
+	else if (strstr((const char*)buffer, "unknown account"))
+		printf("Error: unknown account\n");
+	else if (strstr((const char*)buffer, "have no reward to withdraw"))
+		printf("Error: have no reward to withdraw\n");
+
+	/* unForbidden */
+	else if (strstr((const char*)buffer, "password or unlock"))
+		printf("Error: authentication needed: password or unlock\n");
+	else if (strstr((const char*)buffer, "should not unforbidden"))
+		printf("Error: should not unforbidden\n");
+
+	/* global error*/
+	else if (strstr((const char*)buffer, "error"))
+		printf("req.buffer: %s\n", buffer);
+	else
+		printf("unknown error\n");
+}
+
+char	*value_of_json(unsigned char *buffer)
+{
+	char	*buffer2;
+	char	*result;
+	int		i = 0;
+	int		j;
+
+	result = strrchr((const char*)buffer, ':');
+	// printf("%p, %p\n", result, buffer+32);
+	j = strlen(result);
+	while (result[--j] != '"');
+	result = ft_strsub(result, 2, j-2);
+	return (result);
 }
 
 size_t	write_callback(char *ptr, size_t size, size_t nmemb, void *userdata)
