@@ -6,10 +6,10 @@
 `sudo apt-get install libgmp-dev`
 
 ## Compile
-`gcc main.c utils.c int_request/* -lcurl -lgmp -o file_name`
+`make`
 
 ## Run
-`./file_name`
+`./interact`
 
 ## Option
 1 = getBalance <br>
