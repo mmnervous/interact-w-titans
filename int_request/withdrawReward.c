@@ -4,7 +4,6 @@ int withdrawReward(char *fromAddress, char *delegateAddress)
 {
 	char				int_withdrawReward[300];
 	char				*result;
-	start_len			data = {.start = 0, .len = 0};
 	get_request			req = {.buffer = NULL, .len = 0, .buflen = 0};
 	CURLcode			ret;
 	CURL				*hnd;

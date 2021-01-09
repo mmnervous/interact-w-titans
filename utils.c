@@ -58,9 +58,7 @@ void	print_error(unsigned char *buffer)
 
 char	*value_of_json(unsigned char *buffer)
 {
-	char	*buffer2;
 	char	*result;
-	int		i = 0;
 	int		j;
 
 	result = strrchr((const char*)buffer, ':');

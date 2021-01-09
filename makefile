@@ -4,7 +4,7 @@ INCLUDE = titans.h
 
 CC = clang
 LIB = -lgmp -lcurl
-# CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 SRC =	main.c utils.c int_request/getBalance.c int_request/unForbidden.c int_request/unlockAccount.c int_request/withdrawReward.c
 OBJ =	$(SRC:.c=.o)
