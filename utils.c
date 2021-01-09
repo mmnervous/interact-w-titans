@@ -1,5 +1,10 @@
 #include "titans.h"
 
+char	*value_of_json(char *valueOf)
+{
+	;
+}
+
 size_t	write_callback(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
 	size_t realsize = size * nmemb;
@@ -67,6 +72,8 @@ start_len ft_truncate(unsigned char *buffer, int delimiter, int x) // this funct
 
 double hexToDec(char *hex)
 {
+	if (!hex)
+		return (-1);
 	mpz_t	nr;
 	mpf_t	f;
 	char	*base10;
