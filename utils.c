@@ -74,18 +74,21 @@ double hexToDec(char *hex)
 {
 	if (!hex)
 		return (-1);
-	mpz_t	nr;
-	mpf_t	f;
-	char	*base10;
-	double	decimal;
+	else
+	{
+		mpz_t	nr;
+		mpf_t	f;
+		char	*base10;
+		double	decimal;
 
-	mpz_init(nr);
-	mpf_init(f);
-	mpz_set_str(nr, hex+2, 16);
-	base10 = mpz_get_str(NULL, 10, nr);
-	mpf_set_str(f, base10, 10);
-	mpf_div_ui (f, f, 1e+18);
-	decimal = mpf_get_d(f);
-	mpz_clear(nr);
-	return (decimal);
+		mpz_init(nr);
+		mpf_init(f);
+		mpz_set_str(nr, hex+2, 16);
+		base10 = mpz_get_str(NULL, 10, nr);
+		mpf_set_str(f, base10, 10);
+		mpf_div_ui (f, f, 1e+18);
+		decimal = mpf_get_d(f);
+		mpz_clear(nr);
+		return (decimal);
+	}
 }
